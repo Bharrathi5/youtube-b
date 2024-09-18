@@ -5,9 +5,9 @@ import VideoContainer from "./VideoContainer";
 
 const Body = () => {
   return (
-    <div className="flex">
+    <div className="flex w-screen">
       <NavBar />
-      <div className="flex flex-col">
+      <div className="flex flex-col w-11/12">
         <FilterTags />
         <VideoContainer />
       </div>
