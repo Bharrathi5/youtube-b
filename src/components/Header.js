@@ -3,7 +3,7 @@ import youtube_logo from "../images/youtube_logo.png";
 
 const Header = () => {
   return (
-    <div className="flex fixed my-3 px-2 w-screen h-9 justify-between items-center">
+    <div className="flex my-3 px-2 w-screen h-9 justify-between items-center">
       <div className="flex gap-4 ml-5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
