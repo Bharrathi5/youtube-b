@@ -4,7 +4,7 @@ import youtube_logo from "../images/youtube_logo.png";
 const Header = () => {
   return (
     <div className="flex fixed my-3 px-2 w-screen h-9 justify-between items-center">
-      <div className="flex gap-3">
+      <div className="flex gap-4 ml-5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -27,14 +27,14 @@ const Header = () => {
         />
       </div>
       <div className="flex">
-        <div className="flex border-2 w-60 border-slate-300 rounded-l-full p-1">
+        <div className="flex border-2 w-96 border-slate-300 rounded-l-full p-1">
           <input
             type="text"
             placeholder="Search"
             className="outline-none text-black ml-2 items-center"
           />
         </div>
-        <div className="flex items-center justify-center border-2 border-slate-300 rounded-r-full p-1 w-14">
+        <div className="flex items-center justify-center border-2 border-slate-300 border-l-0 rounded-r-full p-1 w-14">
           <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +52,7 @@ const Header = () => {
             </svg>
           </button>
         </div>
-        <div className=" flex justify-center border-2 border-none bg-neutral-200 rounded-full p-1 ml-4 w-9">
+        <div className=" flex justify-center border-2 border-none bg-neutral-200 rounded-full p-1 ml-5 w-9">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -70,14 +70,14 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="flex gap-3 mr-2">
+      <div className="flex gap-10 mr-5 justify-center  items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="size-6 hover:cursor-pointer"
+          className="size-7 hover:cursor-pointer"
         >
           <path
             strokeLinecap="round"
@@ -92,7 +92,7 @@ const Header = () => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="size-6 hover:cursor-pointer"
+          className="size-7 hover:cursor-pointer"
         >
           <path
             strokeLinecap="round"
@@ -106,7 +106,7 @@ const Header = () => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="size-6"
+          className="size-7"
         >
           <path
             strokeLinecap="round"
