@@ -3,7 +3,6 @@ import React from "react";
 const VideoCard = ({ data }) => {
   console.log(data);
   const { snippet, statistics } = data;
-  console.log(snippet);
 
   return (
     <div className="flex flex-col w-80 gap-2">

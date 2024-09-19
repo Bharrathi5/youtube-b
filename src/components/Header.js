@@ -1,7 +1,13 @@
 import React from "react";
 import youtube_logo from "../images/youtube_logo.png";
+import { useDispatch } from "react-redux";
+import { toggleSidebar } from "../utils/sidebarSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const toggleMenu = () => {
+    dispatch(toggleSidebar());
+  };
   return (
     <div className="flex my-3 px-2 h-9 justify-between items-center">
       <div className="flex gap-4 ml-5">
@@ -12,6 +18,7 @@ const Header = () => {
           strokeWidth={1.5}
           stroke="currentColor"
           className="size-6 hover:cursor-pointer"
+          onClick={toggleMenu}
         >
           <path
             strokeLinecap="round"
