@@ -1,16 +1,32 @@
 import React from "react";
-import NavBar from "./NavBar";
-import FilterTags from "./FilterTags";
-import VideoContainer from "./VideoContainer";
+import HomePage from "./HomePage";
+import Header from "./Header";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Browse from "./Browse";
+import WatchPage from "./WatchPage";
+
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomePage />,
+    children: [
+      {
+        path: "/",
+        element: <Browse />,
+      },
+      {
+        path: "/watch",
+        element: <WatchPage />,
+      },
+    ],
+  },
+]);
 
 const Body = () => {
   return (
-    <div className="flex w-screen">
-      <NavBar />
-      <div className="flex flex-col w-11/12">
-        <FilterTags />
-        <VideoContainer />
-      </div>
+    <div className="flex flex-col">
+      <Header />
+      <RouterProvider router={appRouter} />
     </div>
   );
 };

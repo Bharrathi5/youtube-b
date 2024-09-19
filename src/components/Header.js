@@ -3,7 +3,7 @@ import youtube_logo from "../images/youtube_logo.png";
 
 const Header = () => {
   return (
-    <div className="flex my-3 px-2 w-screen h-9 justify-between items-center">
+    <div className="flex my-3 px-2 h-9 justify-between items-center">
       <div className="flex gap-4 ml-5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -11,7 +11,7 @@ const Header = () => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="size-7 hover:cursor-pointer"
+          className="size-6 hover:cursor-pointer"
         >
           <path
             strokeLinecap="round"
@@ -19,12 +19,13 @@ const Header = () => {
             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
           />
         </svg>
-
-        <img
-          className="w-32 hover:cursor-pointer"
-          src={youtube_logo}
-          alt="logo"
-        />
+        <a href="/">
+          <img
+            className="w-24 hover:cursor-pointer"
+            src={youtube_logo}
+            alt="logo"
+          />
+        </a>
       </div>
       <div className="flex">
         <div className="flex border-2 w-96 border-slate-300 rounded-l-full p-1">
@@ -77,7 +78,7 @@ const Header = () => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="size-7 hover:cursor-pointer"
+          className="size-6 hover:cursor-pointer"
         >
           <path
             strokeLinecap="round"
@@ -92,7 +93,7 @@ const Header = () => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="size-7 hover:cursor-pointer"
+          className="size-6 hover:cursor-pointer"
         >
           <path
             strokeLinecap="round"
@@ -106,7 +107,7 @@ const Header = () => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="size-7"
+          className="size-6"
         >
           <path
             strokeLinecap="round"
