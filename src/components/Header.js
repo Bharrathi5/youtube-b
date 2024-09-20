@@ -6,11 +6,11 @@ import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { IoIosSearch } from "react-icons/io";
 
 const Header = () => {
-  const dispatch = useDispatch();
-
   const [searchQuery, setSearchQuery] = useState("");
-  const [suggestion, setSuggestion] = useState("");
+  const [suggestion, setSuggestion] = useState([]);
   const [showSuggestion, setShowSuggestion] = useState(false);
+
+  const dispatch = useDispatch();
 
   const toggleMenu = () => {
     dispatch(toggleSidebar());
@@ -20,7 +20,6 @@ const Header = () => {
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const result = await data.json();
     setSuggestion(result[1]);
-    console.log(result[1]);
   };
 
   useEffect(() => {
@@ -41,7 +40,7 @@ const Header = () => {
           strokeWidth={1.5}
           stroke="currentColor"
           className="size-6 hover:cursor-pointer"
-          onClick={toggleMenu}
+          onClick={() => toggleMenu()}
         >
           <path
             strokeLinecap="round"
@@ -68,8 +67,8 @@ const Header = () => {
                 value={searchQuery}
                 className="outline-none w-full bg-transparent text-black ml-2 items-center"
                 onChange={(e) => setSearchQuery(e.target.value)}
-                onFocus={setShowSuggestion(true)}
-                onBlur={setShowSuggestion(false)}
+                onFocus={() => setShowSuggestion(true)}
+                onBlur={() => setShowSuggestion(false)}
               />
             </div>
             <div>
@@ -93,8 +92,9 @@ const Header = () => {
               </div>
             </div>
           </div>
+
           {showSuggestion && (
-            <div className="w-96 fixed  bg-white border-2 shadow-md h-auto rounded-xl px-2 py-2 gap-2">
+            <div className="w-96 fixed  bg-white border-2 shadow-md h-auto rounded-xl ">
               {suggestion.map((s) => (
                 <p
                   key={s}
