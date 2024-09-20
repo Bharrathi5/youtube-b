@@ -1,13 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import youtube_logo from "../images/youtube_logo.png";
 import { useDispatch } from "react-redux";
 import { toggleSidebar } from "../utils/sidebarSlice";
+import { YOUTUBE_SEARCH_API } from "../utils/constants";
+import { IoIosSearch } from "react-icons/io";
 
 const Header = () => {
   const dispatch = useDispatch();
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [suggestion, setSuggestion] = useState("");
+  const [showSuggestion, setShowSuggestion] = useState(false);
+
   const toggleMenu = () => {
     dispatch(toggleSidebar());
   };
+
+  const getSearchSuggestion = async () => {
+    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+    const result = await data.json();
+    setSuggestion(result[1]);
+    console.log(result[1]);
+  };
+
+  useEffect(() => {
+    const apiTimer = setTimeout(() => {
+      getSearchSuggestion();
+    }, 300);
+
+    return () => clearTimeout(apiTimer);
+  }, [searchQuery]);
+
   return (
     <div className="flex my-3 px-2 h-9 z-20 justify-between items-center">
       <div className="flex gap-4 ml-5">
@@ -35,32 +58,57 @@ const Header = () => {
         </a>
       </div>
       <div className="flex">
-        <div className="flex border-2 w-96 border-slate-300 rounded-l-full p-1 active:border-sky-600">
-          <input
-            type="text"
-            placeholder="Search"
-            className="outline-none w-full bg-transparent text-black ml-2 items-center"
-          />
-        </div>
-        <div className="flex items-center justify-center border-2 border-slate-300 border-l-0 rounded-r-full p-1 w-14">
-          <button>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+        <div>
+          <div className="flex">
+            <div className="flex border-2 w-96 border-slate-300 rounded-l-full p-1 active:border-sky-600">
+              <IoIosSearch className="mx-2 size-6" />
+              <input
+                type="text"
+                placeholder=" Search"
+                value={searchQuery}
+                className="outline-none w-full bg-transparent text-black ml-2 items-center"
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={setShowSuggestion(true)}
+                onBlur={setShowSuggestion(false)}
               />
-            </svg>
-          </button>
+            </div>
+            <div>
+              <div className="flex items-end justify-center border-2 border-slate-300 border-l-0 rounded-r-full p-1 w-14">
+                <button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          {showSuggestion && (
+            <div className="w-96 fixed  bg-white border-2 shadow-md h-auto rounded-xl px-2 py-2 gap-2">
+              {suggestion.map((s) => (
+                <p
+                  key={s}
+                  className="py-1 px-2 flex gap-2 hover:bg-slate-100 hover:rounded-md"
+                >
+                  <IoIosSearch className="size-5 mt-1" />
+                  {s}
+                </p>
+              ))}
+            </div>
+          )}
         </div>
-        <div className="flex justify-center border-2 border-none bg-neutral-200 rounded-full p-1 ml-5 w-9">
+
+        <div className="flex h-9 justify-center border-2 border-none bg-neutral-200 rounded-full p-1 ml-5 w-9">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 const HomePage = () => {
   return (
     <div>
-      <div className="flex mt-16">
+      <div className="flex ">
         <NavBar />
         <Outlet />
       </div>

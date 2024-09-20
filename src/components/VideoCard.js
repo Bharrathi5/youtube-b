@@ -1,7 +1,6 @@
 import React from "react";
 
 const VideoCard = ({ data }) => {
-  console.log(data);
   const { snippet, statistics } = data;
 
   return (
