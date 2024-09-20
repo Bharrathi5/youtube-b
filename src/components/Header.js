@@ -9,7 +9,7 @@ const Header = () => {
     dispatch(toggleSidebar());
   };
   return (
-    <div className="flex my-3 px-2 h-9 justify-between items-center">
+    <div className="flex my-3 px-2 h-9 z-20 justify-between items-center">
       <div className="flex gap-4 ml-5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -35,11 +35,11 @@ const Header = () => {
         </a>
       </div>
       <div className="flex">
-        <div className="flex border-2 w-96 border-slate-300 rounded-l-full p-1">
+        <div className="flex border-2 w-96 border-slate-300 rounded-l-full p-1 active:border-sky-600">
           <input
             type="text"
             placeholder="Search"
-            className="outline-none text-black ml-2 items-center"
+            className="outline-none w-full bg-transparent text-black ml-2 items-center"
           />
         </div>
         <div className="flex items-center justify-center border-2 border-slate-300 border-l-0 rounded-r-full p-1 w-14">
@@ -60,7 +60,7 @@ const Header = () => {
             </svg>
           </button>
         </div>
-        <div className=" flex justify-center border-2 border-none bg-neutral-200 rounded-full p-1 ml-5 w-9">
+        <div className="flex justify-center border-2 border-none bg-neutral-200 rounded-full p-1 ml-5 w-9">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
