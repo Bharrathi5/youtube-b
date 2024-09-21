@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import youtube_logo from "../images/youtube_logo.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleSidebar } from "../utils/sidebarSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { IoIosSearch } from "react-icons/io";
+import { cacheResult } from "../utils/searchSlice";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -12,19 +13,31 @@ const Header = () => {
 
   const dispatch = useDispatch();
 
+  const cacheSuggestion = useSelector((store) => store.search);
+
   const toggleMenu = () => {
     dispatch(toggleSidebar());
+  };
+
+  const handlesuggestion = (s) => {
+    setSearchQuery(s);
+    setShowSuggestion(false);
   };
 
   const getSearchSuggestion = async () => {
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const result = await data.json();
     setSuggestion(result[1]);
+    dispatch(cacheResult({ [searchQuery]: result[1] }));
   };
 
   useEffect(() => {
     const apiTimer = setTimeout(() => {
-      getSearchSuggestion();
+      if (cacheSuggestion[searchQuery]) {
+        setSuggestion(cacheSuggestion[searchQuery]);
+      } else {
+        getSearchSuggestion();
+      }
     }, 300);
 
     return () => clearTimeout(apiTimer);
@@ -60,7 +73,7 @@ const Header = () => {
         <div>
           <div className="flex">
             <div className="flex border-2 w-96 border-slate-300 rounded-l-full p-1 active:border-sky-600">
-              <IoIosSearch className="mx-2 size-6" />
+              <IoIosSearch className="ml-2 size-6" />
               <input
                 type="text"
                 placeholder=" Search"
@@ -94,13 +107,14 @@ const Header = () => {
           </div>
 
           {showSuggestion && (
-            <div className="w-96 fixed  bg-white border-2 shadow-md h-auto rounded-xl ">
+            <div className="w-[438px] fixed  bg-white  shadow-md h-auto rounded-xl ">
               {suggestion.map((s) => (
                 <p
                   key={s}
                   className="py-1 px-2 flex gap-2 hover:bg-slate-100 hover:rounded-md"
+                  onClick={() => handlesuggestion(s)}
                 >
-                  <IoIosSearch className="size-5 mt-1" />
+                  <IoIosSearch className="size-5 mt-1 ml-2" />
                   {s}
                 </p>
               ))}
