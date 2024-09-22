@@ -8,7 +8,7 @@ const VideoCard = ({ data }) => {
       <div>
         <img
           className="w-80 rounded-2xl"
-          src={snippet?.thumbnails?.standard?.url}
+          src={snippet?.thumbnails?.medium?.url}
           alt="video_thumbnail"
         />
       </div>
