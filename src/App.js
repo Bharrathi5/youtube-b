@@ -5,6 +5,7 @@ import Browse from "./components/Browse";
 import WatchPage from "./components/WatchPage";
 import HomePage from "./components/HomePage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 const appRouter = createBrowserRouter([
   {
     path: "/",
