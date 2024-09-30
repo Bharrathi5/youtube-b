@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const videoSlice = createSlice({
   name: "video",
   initialState: {
-    popularVideo: null,
+    popularVideo: [],
   },
   reducers: {
     addPopularVideo: (state, action) => {
-      state.popularVideo = action.payload;
+      state.popularVideo.push(...action.payload);
     },
   },
 });
