@@ -25,3 +25,11 @@ export const YOUTUBE_API_URL =
 
 export const YOUTUBE_SEARCH_API =
   "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+
+export const options = {
+  method: "GET",
+  headers: {
+    "x-rapidapi-key": "d12ebf6d5cmsh602b8dbf2b472eep1fb4f2jsnbc6f463ca8ee",
+    "x-rapidapi-host": "youtube-v31.p.rapidapi.com",
+  },
+};

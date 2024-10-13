@@ -21,7 +21,6 @@ const useVideo = () => {
     }`;
     const data = await fetch(url);
     const result = await data.json();
-    console.log(result);
 
     if (result.items) {
       dispatch(addPopularVideo(result.items));
