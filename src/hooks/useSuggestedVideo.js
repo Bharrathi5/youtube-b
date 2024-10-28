@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { options } from "../utils/constants";
+import { options, SUGGEST_API } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addSuggestVideo } from "../utils/suggestSlice";
 
@@ -13,9 +13,7 @@ const useSuggestedVideo = (videoId) => {
 
   const getSuggestedVideos = async () => {
     const url =
-      "https://youtube-v31.p.rapidapi.com/search?relatedToVideoId=" +
-      videoId +
-      "&part=id%2Csnippet&type=video&maxResults=50";
+      SUGGEST_API + videoId + "&part=id%2Csnippet&type=video&maxResults=50";
     try {
       const response = await fetch(url, options);
       const result = await response.json();

@@ -33,3 +33,9 @@ export const options = {
     "x-rapidapi-host": "youtube-v31.p.rapidapi.com",
   },
 };
+
+export const SUGGEST_API =
+  "https://youtube-v31.p.rapidapi.com/search?relatedToVideoId=";
+
+
+  export const COMMENT_API = " https://youtube-v31.p.rapidapi.com/commentThreads?part=snippet&videoId="

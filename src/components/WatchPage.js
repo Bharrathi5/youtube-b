@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Link, useSearchParams } from "react-router-dom";
 import useSuggestedVideo from "../hooks/useSuggestedVideo";
 import SuggestCard from "./SuggestCard";
+import useComment from "../hooks/useComment";
 
 const WatchPage = () => {
   const [searchParam] = useSearchParams();
@@ -15,6 +16,7 @@ const WatchPage = () => {
   const { snippet, statistics } = videoDetails;
 
   useSuggestedVideo(videoId);
+  useComment(videoId);
 
   return (
     <div className="flex gap-6 mt-5">
